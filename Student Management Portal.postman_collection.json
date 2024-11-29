@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "13f2f29c-4ab0-4a7b-8303-4ca897c01bef",
+		"name": "Student Management Portal",
+		"description": "### **System Description**\n\nThe **Student Management Portal** is an academic management platform that streamlines interactions between students and administrators for managing student records, academic assignments, and authentication. The system is designed to enable both students and administrators to efficiently manage and engage with academic activities, offering features such as student registration, login and assignments management.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39823336"
+	},
+	"item": [
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Register Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"user10\",\n  \"email\": \"user10@example.com\",\n  \"password\": \"user123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"register"
+							]
+						},
+						"description": "This endpoint allows a new student to register by providing their details, including name, email, password. Upon successful registration, the system will store the student's information and provide a response confirming the creation of the student."
+					},
+					"response": []
+				},
+				{
+					"name": "Login Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"user10@example.com\",\n  \"password\": \"user123\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"login"
+							]
+						},
+						"description": "This endpoint allows a registered student to log in by providing their **email** and **password**. Upon successful authentication, the system will generate and return an authentication token that must be included in the headers of subsequent requests to access secure resources."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Assignment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/assignment/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"assignment",
+								"create"
+							]
+						},
+						"description": "This endpoint allows a logged-in student to create a new assignment. The student must provide the task details (such as the task name, description, and due date) in the request body. This operation creates a new assignment associated with the authenticated student."
+					},
+					"response": []
+				},
+				{
+					"name": "List All Assignments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMUBleGFtcGxlLmNvbSIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI4MTQ5MDYsImV4cCI6MTczMjg1MDkwNn0.pnqM0-buIwJRMlUZPGJSvAFO7pNCIh_zrggNCDN-JUI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/student/assignments/getall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"student",
+								"assignments",
+								"getall"
+							]
+						},
+						"description": "The endpoint allows the authenticated student to retrieve a list of all assignments they have created or are associated with. This endpoint provides a way for students to view and manage their tasks within the system."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Student** in the Student Management Portal is provided with essential features to register, log in, and manage their academic activities in a secure environment. These functionalities ensure students can access and control their academic information, providing a personalized and seamless experience."
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@gmail.com\",\n  \"password\": \"myadmin\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"login"
+							]
+						},
+						"description": "Allows an admin to log in using their email and password. The endpoint returns an authentication token that must be used in subsequent requests to access secure resources.  \nBelow is the default Admin Credentials."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczMjgxNzEyMiwiZXhwIjoxNzMyODUzMTIyfQ.oj3z9TJhL-8xkj0aQnZ4mXEwdLoJLRx6kq6S34qz5e8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/admin/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"admin",
+								"students"
+							]
+						},
+						"description": "This endpoint allows an authenticated admin to retrieve a list of all students in the system. The request must include a valid authentication token in the header for authorization. The response returns a list of students along with their details."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczMjgxNzM2MSwiZXhwIjoxNzMyODUzMzYxfQ.U5HSxTf3UikrcojBccDTNaogtksi8lA_1seyg7eLQuM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/admin/students/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"admin",
+								"students",
+								"delete",
+								"4"
+							]
+						},
+						"description": "This endpoint allows an authenticated admin to delete a student from the system based on the provided ID. The request must include a valid authentication token in the header for authorization. The student with the specified ID will be permanently deleted from the system."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiUk9MRV9BRE1JTiIsImlhdCI6MTczMjgxNzM2MSwiZXhwIjoxNzMyODUzMzYxfQ.U5HSxTf3UikrcojBccDTNaogtksi8lA_1seyg7eLQuM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"Swapnali\",\n        \"email\": \"swapnali@gmail.com\",\n        \"password\": \"111111\",\n        \"role\": \"ROLE_USER\"\n      \n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/VRV_Assignment/api/admin/students/update/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"VRV_Assignment",
+								"api",
+								"admin",
+								"students",
+								"update",
+								"3"
+							]
+						},
+						"description": "This endpoint allows an authenticated admin to update the details of a specific student based on the provided ID. The request must include a valid authentication token in the header for authorization. The request body should contain the updated details of the student."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Admin Portal** is a secure interface where authenticated administrators can manage student data, update student details, view the student list, and delete students. This portal is designed to facilitate the administration and maintenance of student accounts, ensuring smooth operations for the system. Below is a summary of all the key functionalities available to an admin."
+		}
+	]
+}
