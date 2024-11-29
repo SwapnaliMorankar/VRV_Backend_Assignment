@@ -38,7 +38,7 @@ To test the API endpoints, you can import the provided Postman collection and us
 
    - Open Postman.
    - Click on the **Import** button in the top left corner.
-   - Choose **File** and select the `UStudent Management Portal.postman_collection.json` file to import the collection.
+   - Choose **File** and select the `Student Management Portal.postman_collection.json` file to import the collection.
 
 2. **Test the APIs Using the Hosted URL**:
    **Base URL**: http://13.201.21.187:8080/VRV_Assignment/
